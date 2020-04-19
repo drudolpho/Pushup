@@ -39,6 +39,7 @@ class MainViewController: UIViewController{
     func setupViews() {
         countDownLabel.isHidden = true
         countDownLabel.text = String(countDownTime)
+        setGradientBackground(colorTop: .black, colorBottom: .darkGray)
     }
     
     func setupControllers() {
@@ -46,6 +47,17 @@ class MainViewController: UIViewController{
         cameraController.setUpCamera()
         cameraController.audioController = audioController
         cameraController.pushupController = pushupController
+    }
+    
+    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop.cgColor, colorBottom.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.9)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+        gradientLayer.frame = self.view.bounds
+
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 
     
