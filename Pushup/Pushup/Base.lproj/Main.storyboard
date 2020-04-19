@@ -15,35 +15,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Guz-2O-RNX">
-                                <rect key="frame" x="150" y="411" width="115" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="buttonTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ag0-xg-L99"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rZ-7j-3Gb">
-                                <rect key="frame" x="168" y="228" width="78" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB3-an-qcB">
+                                <rect key="frame" x="175.5" y="372" width="63" height="152"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="130"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB3-an-qcB">
-                                <rect key="frame" x="191.5" y="318" width="31" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBu-bO-Voj">
+                                <rect key="frame" x="131" y="732" width="152" height="100"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="75"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WZs-Im-ejn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rZ-7j-3Gb">
+                                <rect key="frame" x="149" y="309" width="116" height="55"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="47"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.07158370637167881" green="0.16399312287911313" blue="0.20795028988752862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vB3-an-qcB" firstAttribute="top" secondItem="6rZ-7j-3Gb" secondAttribute="bottom" constant="50" id="Id1-Np-JSL"/>
-                            <constraint firstItem="6rZ-7j-3Gb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QCB-TQ-csg"/>
-                            <constraint firstItem="vB3-an-qcB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="b3F-Tk-tEq"/>
-                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ght-yv-L7j"/>
-                            <constraint firstItem="Guz-2O-RNX" firstAttribute="top" secondItem="6rZ-7j-3Gb" secondAttribute="bottom" constant="143" id="n63-2E-xRW"/>
+                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXX-Rq-h99"/>
+                            <constraint firstItem="vB3-an-qcB" firstAttribute="top" secondItem="6rZ-7j-3Gb" secondAttribute="bottom" constant="8" id="jHK-ne-OCP"/>
+                            <constraint firstItem="gBu-bO-Voj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="okj-bF-NAM"/>
+                            <constraint firstItem="6rZ-7j-3Gb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qbY-bf-SiA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gBu-bO-Voj" secondAttribute="bottom" constant="30" id="ujW-Lb-RVj"/>
+                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yTM-PD-uKr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -55,7 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="Guz-2O-RNX" id="lbg-Ke-bb6"/>
+                        <outlet property="button" destination="gBu-bO-Voj" id="eWN-no-RsK"/>
                         <outlet property="countDownLabel" destination="6rZ-7j-3Gb" id="JZm-GM-yyl"/>
                         <outlet property="pushupLabel" destination="vB3-an-qcB" id="osi-8F-Gf3"/>
                     </connections>

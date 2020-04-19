@@ -18,7 +18,7 @@ enum AudioType {
 class AudioController {
     
     var audioPlayer = AVAudioPlayer()
-    var audioType: AudioType = .sound
+    var audioType: AudioType = .speak
     
     init() {
         setupAudio()
