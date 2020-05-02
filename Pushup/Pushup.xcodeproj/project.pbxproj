@@ -12,7 +12,8 @@
 		9527D1B9244B849900FD6ECD /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1B8244B849900FD6ECD /* Set+Convenience.swift */; };
 		9527D1BB244B89E300FD6ECD /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1BA244B89E300FD6ECD /* DataViewController.swift */; };
 		95944BC4244BB6610045894E /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95944BC3244BB6610045894E /* TestController.swift */; };
-		959BE508245DE908000A8E8E /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BE507245DE908000A8E8E /* InstructionViewController.swift */; };
+		959BE50A245DEB25000A8E8E /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BE509245DEB25000A8E8E /* InstructionView.swift */; };
+		959BE50C245E054C000A8E8E /* seoulnamsan-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 959BE50B245E054B000A8E8E /* seoulnamsan-medium.ttf */; };
 		95D5D5D3244CAEF4002FB044 /* ClippedPock.wav in Resources */ = {isa = PBXBuildFile; fileRef = 95D5D5D2244CAEF4002FB044 /* ClippedPock.wav */; };
 		95D5D5D5244CAEFA002FB044 /* ClippedPing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 95D5D5D4244CAEFA002FB044 /* ClippedPing.wav */; };
 		95D5D5D8244CC512002FB044 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D5D5D7244CC512002FB044 /* AudioController.swift */; };
@@ -32,7 +33,8 @@
 		9527D1B8244B849900FD6ECD /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
 		9527D1BA244B89E300FD6ECD /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		95944BC3244BB6610045894E /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
-		959BE507245DE908000A8E8E /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		959BE509245DEB25000A8E8E /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
+		959BE50B245E054B000A8E8E /* seoulnamsan-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seoulnamsan-medium.ttf"; sourceTree = "<group>"; };
 		95D5D5D2244CAEF4002FB044 /* ClippedPock.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ClippedPock.wav; sourceTree = "<group>"; };
 		95D5D5D4244CAEFA002FB044 /* ClippedPing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ClippedPing.wav; sourceTree = "<group>"; };
 		95D5D5D7244CC512002FB044 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
@@ -90,9 +92,17 @@
 		959BE506245DE8DD000A8E8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				959BE507245DE908000A8E8E /* InstructionViewController.swift */,
+				959BE509245DEB25000A8E8E /* InstructionView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		959BE50D245E0566000A8E8E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				959BE50B245E054B000A8E8E /* seoulnamsan-medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		95D5D5D6244CC4FE002FB044 /* Controllers */ = {
@@ -135,6 +145,7 @@
 				95E774ED2447590B001BD477 /* Assets.xcassets */,
 				95E774EF2447590B001BD477 /* LaunchScreen.storyboard */,
 				95E774F22447590B001BD477 /* Info.plist */,
+				959BE50D245E0566000A8E8E /* Fonts */,
 				95944BC5244C032B0045894E /* Sounds */,
 			);
 			path = Pushup;
@@ -198,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959BE50C245E054C000A8E8E /* seoulnamsan-medium.ttf in Resources */,
 				95E774F12447590B001BD477 /* LaunchScreen.storyboard in Resources */,
 				95D5D5D3244CAEF4002FB044 /* ClippedPock.wav in Resources */,
 				95D5D5D5244CAEFA002FB044 /* ClippedPing.wav in Resources */,
@@ -216,9 +228,9 @@
 				9527D1B7244B843900FD6ECD /* CoreDataStack.swift in Sources */,
 				95D5D5D8244CC512002FB044 /* AudioController.swift in Sources */,
 				9527D1BB244B89E300FD6ECD /* DataViewController.swift in Sources */,
-				959BE508245DE908000A8E8E /* InstructionViewController.swift in Sources */,
 				95D5D5DC244CD5E4002FB044 /* PushupController.swift in Sources */,
 				9527D1B4244B7D6E00FD6ECD /* Pushup.xcdatamodeld in Sources */,
+				959BE50A245DEB25000A8E8E /* InstructionView.swift in Sources */,
 				95D5D5DA244CCAF8002FB044 /* CameraController.swift in Sources */,
 				95944BC4244BB6610045894E /* TestController.swift in Sources */,
 				95E774E524475907001BD477 /* AppDelegate.swift in Sources */,

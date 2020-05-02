@@ -24,6 +24,10 @@ class DataViewController: UIViewController {
         updateViews()
     }
     
+    @IBAction func backTapped(sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     func updateViews() {
         //Total Pushups
         let totalPushups = getTotalPushups()
