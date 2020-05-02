@@ -30,7 +30,7 @@ class CameraController: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             testController.rawValues.append(currentBrightness)
             //TESTING
             
-            logic()
+            calculateBrightnessLogic()
         }
     }
     
@@ -65,7 +65,7 @@ class CameraController: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     //Helper Methods
     
-    private func logic() {
+    private func calculateBrightnessLogic() {
         // Calculate if it was a valid pushup
         guard allowedToStartTrackingBrightness == true else { return }
         var roomValue = 100.0

@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB3-an-qcB">
-                                <rect key="frame" x="175.5" y="372" width="63" height="152"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB3-an-qcB">
+                                <rect key="frame" x="176" y="372.5" width="62.5" height="151.5"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="130"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -25,27 +25,27 @@
                                 <rect key="frame" x="131" y="732" width="152" height="100"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="75"/>
                                 <state key="normal" title="Start">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WZs-Im-ejn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rZ-7j-3Gb">
-                                <rect key="frame" x="149" y="309" width="116" height="55"/>
+                                <rect key="frame" x="149" y="287.5" width="116" height="55"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="47"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.07158370637167881" green="0.16399312287911313" blue="0.20795028988752862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hXX-Rq-h99"/>
-                            <constraint firstItem="vB3-an-qcB" firstAttribute="top" secondItem="6rZ-7j-3Gb" secondAttribute="bottom" constant="8" id="jHK-ne-OCP"/>
+                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4HM-r1-5O4"/>
+                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="B5b-AE-27W"/>
+                            <constraint firstItem="vB3-an-qcB" firstAttribute="top" secondItem="6rZ-7j-3Gb" secondAttribute="bottom" constant="30" id="Ym0-H2-nWs"/>
                             <constraint firstItem="gBu-bO-Voj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="okj-bF-NAM"/>
                             <constraint firstItem="6rZ-7j-3Gb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qbY-bf-SiA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gBu-bO-Voj" secondAttribute="bottom" constant="30" id="ujW-Lb-RVj"/>
-                            <constraint firstItem="vB3-an-qcB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yTM-PD-uKr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -57,9 +57,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="gBu-bO-Voj" id="eWN-no-RsK"/>
                         <outlet property="countDownLabel" destination="6rZ-7j-3Gb" id="JZm-GM-yyl"/>
                         <outlet property="pushupLabel" destination="vB3-an-qcB" id="osi-8F-Gf3"/>
+                        <outlet property="startButton" destination="gBu-bO-Voj" id="eWN-no-RsK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

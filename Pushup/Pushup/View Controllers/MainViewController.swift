@@ -26,7 +26,7 @@ class MainViewController: UIViewController{
     var finishedAlert: UIAlertController?
     
     //Outlets
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var pushupLabel: UILabel!
     
@@ -39,7 +39,10 @@ class MainViewController: UIViewController{
     func setupViews() {
         countDownLabel.isHidden = true
         countDownLabel.text = String(countDownTime)
-        setGradientBackground(colorTop: .black, colorBottom: .darkGray)
+        //Nav Bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     func setupControllers() {
@@ -49,29 +52,18 @@ class MainViewController: UIViewController{
         cameraController.pushupController = pushupController
     }
     
-    func setGradientBackground(colorTop: UIColor, colorBottom: UIColor){
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop.cgColor, colorBottom.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.9)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
-        gradientLayer.frame = self.view.bounds
 
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-    }
-
-    
     @IBAction func buttonTapped(sender: UIButton) {
         
         if cameraController.captureSession.isRunning {
             cameraController.captureSession.stopRunning()
-            button.setTitle("Start", for: .normal)
+            startButton.setTitle("Start", for: .normal)
             stopTimer()
             setupAlert()
             self.present(finishedAlert!, animated: true)
         } else {
             cameraController.captureSession.startRunning()
-            button.setTitle("Stop", for: .normal)
+            startButton.setTitle("Stop", for: .normal)
             startCountDown()
         }
     }
@@ -143,6 +135,12 @@ extension MainViewController: PushupControllerDelegate {
     func updatePushupLabel(pushups: Int) {
         DispatchQueue.main.async {
             self.pushupLabel.text = String(pushups)
+            UIView.animate(withDuration: 0.2) {
+                self.pushupLabel.transform = CGAffineTransform(scaleX: 1.8, y: 1.8)
+            }
+            UIView.animate(withDuration: 0.2) {
+                self.pushupLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
         }
     }
 }
