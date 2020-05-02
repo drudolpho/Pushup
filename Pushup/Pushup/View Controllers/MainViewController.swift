@@ -26,9 +26,15 @@ class MainViewController: UIViewController{
     var finishedAlert: UIAlertController?
     
     //Outlets
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var pushupLabel: UILabel!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var instructionView: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var soundButton: UIButton!
+    @IBOutlet weak var startImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +42,34 @@ class MainViewController: UIViewController{
         setupControllers()
     }
     
+    func prepareDark() {
+        topView.isHidden = true
+        instructionView.isHidden = true
+        quoteLabel.isHidden = true
+        pushupLabel.isHidden = false
+        soundButton.isHidden = false
+        startButton.setTitleColor(.white, for: .normal)
+        bottomView.backgroundColor = .black
+        self.view.backgroundColor = .black
+    }
+    
+    func prepareLight() {
+        topView.isHidden = false
+        instructionView.isHidden = false
+        quoteLabel.isHidden = false
+        soundButton.isHidden = true
+        pushupLabel.isHidden = true
+        startButton.setTitleColor(self.titleLabel.textColor, for: .normal)
+        bottomView.backgroundColor = self.topView.backgroundColor
+        self.view.backgroundColor = self.topView.backgroundColor
+    }
+    
     func setupViews() {
-        countDownLabel.isHidden = true
-        countDownLabel.text = String(countDownTime)
+        pushupLabel.isHidden = true
+        soundButton.isHidden = true
+        pushupLabel.text = String(countDownTime)
+        instructionView.layer.cornerRadius = 40
+        startButton.setTitleColor(self.titleLabel.textColor, for: .normal)
         //Nav Bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -58,14 +89,21 @@ class MainViewController: UIViewController{
         if cameraController.captureSession.isRunning {
             cameraController.captureSession.stopRunning()
             startButton.setTitle("Start", for: .normal)
-            stopTimer()
+            startImage.image = UIImage(named: "Start")
             setupAlert()
+            prepareLight()
             self.present(finishedAlert!, animated: true)
         } else {
             cameraController.captureSession.startRunning()
             startButton.setTitle("Stop", for: .normal)
+            startImage.image = UIImage(named: "Stop")
             startCountDown()
+            prepareDark()
         }
+    }
+    
+    @IBAction func soundTapped(sender: UIButton) {
+        
     }
     
     //Timer Methods
@@ -73,13 +111,11 @@ class MainViewController: UIViewController{
     private func startCountDown() {
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDownAction), userInfo: nil, repeats: true)
-        countDownLabel.isHidden = false
     }
     
     private func startTiming() {
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
-        countDownLabel.isHidden = false
     }
     
     private func stopTimer() {
@@ -91,19 +127,18 @@ class MainViewController: UIViewController{
         cameraController.reset()
         countDownTime = 3
         pSetTime = 0
-        countDownLabel.text = String(countDownTime)
-        countDownLabel.isHidden = true
+        pushupLabel.text = String(countDownTime)
     }
     
     @objc func countDownAction() {
         if countDownTime == 1 {
-            countDownLabel.text = "Go!"
+            pushupLabel.text = "Go!"
             stopTimer()
             startTiming()
             cameraController.captureStartingBrightness()
         } else {
             countDownTime -= 1
-            countDownLabel.text = String(countDownTime)
+            pushupLabel.text = String(countDownTime)
         }
     }
     
@@ -112,11 +147,11 @@ class MainViewController: UIViewController{
     }
    
     private func setupAlert() {
-        finishedAlert = UIAlertController(title: "\(pushupController.pushupCount) pushups", message: "in \(pSetTime) seconds", preferredStyle: .alert)
-        finishedAlert?.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+        finishedAlert = UIAlertController(title: "\(pushupController.pushupCount) pushups in \(pSetTime) seconds ", message: "Save this set?", preferredStyle: .alert)
+        finishedAlert?.addAction(UIAlertAction(title: "No", style: .destructive, handler: { (action) in
             self.reset()
         }))
-        finishedAlert?.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+        finishedAlert?.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             self.pushupController.createSetOfPushups(time: self.pSetTime)
             
             //TESTING
