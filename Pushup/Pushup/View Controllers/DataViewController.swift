@@ -28,6 +28,31 @@ class DataViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
+    @IBAction func resetTapped(sender: UIButton) {
+        let resetAlert = UIAlertController(title: "Are you sure you want to do this?", message: "All of your saved data will be lost", preferredStyle: .actionSheet)
+        resetAlert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { (_) in
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SetOfPushups")
+
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+            do {
+                try CoreDataStack.shared.mainContext.execute(batchDeleteRequest)
+                DispatchQueue.main.async {
+                    self.fetchData()
+                    self.updateViews()
+                }
+            } catch {
+                let errorAlert = UIAlertController(title: "There was a problem deleting your data", message: "Please close the app and re-try", preferredStyle: .actionSheet)
+                errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                DispatchQueue.main.async {
+                    self.present(errorAlert, animated: true)
+                }
+            }
+        }))
+        resetAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(resetAlert, animated: true)
+    }
+    
     func updateViews() {
         //Total Pushups
         let totalPushups = getTotalPushups()
