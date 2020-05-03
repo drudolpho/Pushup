@@ -48,6 +48,7 @@ class MainViewController: UIViewController{
         quoteLabel.isHidden = true
         pushupLabel.isHidden = false
         soundButton.isHidden = false
+        pushupLabel.text = String(countDownTime)
         startButton.setTitleColor(.white, for: .normal)
         bottomView.backgroundColor = .black
         self.view.backgroundColor = .black
@@ -127,7 +128,6 @@ class MainViewController: UIViewController{
         cameraController.reset()
         countDownTime = 3
         pSetTime = 0
-        pushupLabel.text = String(countDownTime)
     }
     
     @objc func countDownAction() {
