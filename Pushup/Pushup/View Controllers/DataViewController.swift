@@ -192,9 +192,15 @@ class DataViewController: UIViewController {
         }
     }
     
+    private func getDailyAvg() {
+        
+    }
+    
     func fetchData() {
         let moc = CoreDataStack.shared.mainContext
         let dataFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SetOfPushups")
+        let sort = NSSortDescriptor(key: "date", ascending: true)
+        dataFetch.sortDescriptors = [sort]
          
         do {
             let fetchedData = try moc.fetch(dataFetch) as! [SetOfPushups]

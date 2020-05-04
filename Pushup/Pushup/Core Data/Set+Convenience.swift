@@ -17,3 +17,13 @@ extension SetOfPushups {
         self.date = Date()
     }
 }
+
+extension Day {
+    convenience init(pushups: Int, average: Int, sets: Int, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        self.init(context: context)
+        self.pushups = Int32(pushups)
+        self.average = Int32(average)
+        self.date = Date()
+        self.sets = Int32(sets)
+    }
+}

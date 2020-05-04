@@ -18,6 +18,7 @@ class MainViewController: UIViewController{
     let cameraController = CameraController()
     let audioController = AudioController()
     let pushupController = PushupController()
+    let dataController = DataController()
     
     //Time
     var countDownTime = 3

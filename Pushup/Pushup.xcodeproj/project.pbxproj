@@ -12,6 +12,7 @@
 		9527D1B7244B843900FD6ECD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1B6244B843900FD6ECD /* CoreDataStack.swift */; };
 		9527D1B9244B849900FD6ECD /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1B8244B849900FD6ECD /* Set+Convenience.swift */; };
 		9527D1BB244B89E300FD6ECD /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1BA244B89E300FD6ECD /* DataViewController.swift */; };
+		95303D7124606AF200B83DD1 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95303D7024606AF200B83DD1 /* DataController.swift */; };
 		95944BC4244BB6610045894E /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95944BC3244BB6610045894E /* TestController.swift */; };
 		959BE50A245DEB25000A8E8E /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BE509245DEB25000A8E8E /* InstructionView.swift */; };
 		959BE50C245E054C000A8E8E /* seoulnamsan-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 959BE50B245E054B000A8E8E /* seoulnamsan-medium.ttf */; };
@@ -35,6 +36,7 @@
 		9527D1B6244B843900FD6ECD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		9527D1B8244B849900FD6ECD /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
 		9527D1BA244B89E300FD6ECD /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		95303D7024606AF200B83DD1 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		95944BC3244BB6610045894E /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
 		959BE509245DEB25000A8E8E /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		959BE50B245E054B000A8E8E /* seoulnamsan-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "seoulnamsan-medium.ttf"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				95D5D5D7244CC512002FB044 /* AudioController.swift */,
 				95D5D5D9244CCAF8002FB044 /* CameraController.swift */,
 				95D5D5DB244CD5E4002FB044 /* PushupController.swift */,
+				95303D7024606AF200B83DD1 /* DataController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				95E774E524475907001BD477 /* AppDelegate.swift in Sources */,
 				95E774E724475907001BD477 /* SceneDelegate.swift in Sources */,
 				9527D1B9244B849900FD6ECD /* Set+Convenience.swift in Sources */,
+				95303D7124606AF200B83DD1 /* DataController.swift in Sources */,
 				95E774F9244759FF001BD477 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
