@@ -49,7 +49,6 @@ class MainViewController: UIViewController{
         pushupLabel.isHidden = false
         soundButton.isHidden = false
         pushupLabel.text = String(countDownTime)
-        startButton.setTitleColor(.white, for: .normal)
         bottomView.backgroundColor = .black
         self.view.backgroundColor = .black
     }
@@ -60,7 +59,6 @@ class MainViewController: UIViewController{
         quoteLabel.isHidden = false
         soundButton.isHidden = true
         pushupLabel.isHidden = true
-        startButton.setTitleColor(self.titleLabel.textColor, for: .normal)
         bottomView.backgroundColor = self.topView.backgroundColor
         self.view.backgroundColor = self.topView.backgroundColor
     }
@@ -70,7 +68,10 @@ class MainViewController: UIViewController{
         soundButton.isHidden = true
         pushupLabel.text = String(countDownTime)
         instructionView.layer.cornerRadius = 40
-        startButton.setTitleColor(self.titleLabel.textColor, for: .normal)
+        instructionView.layer.shadowColor = UIColor.lightGray.cgColor
+        instructionView.layer.shadowOpacity = 0.3
+        instructionView.layer.shadowOffset = .zero
+        instructionView.layer.shadowRadius = 10
         //Nav Bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -89,15 +90,14 @@ class MainViewController: UIViewController{
         
         if cameraController.captureSession.isRunning {
             cameraController.captureSession.stopRunning()
-            startButton.setTitle("Start", for: .normal)
-            startImage.image = UIImage(named: "Start")
+            stopTimer()
+            startImage.image = UIImage(named: "StartButton")
             setupAlert()
             prepareLight()
             self.present(finishedAlert!, animated: true)
         } else {
             cameraController.captureSession.startRunning()
-            startButton.setTitle("Stop", for: .normal)
-            startImage.image = UIImage(named: "Stop")
+            startImage.image = UIImage(named: "StopButton")
             startCountDown()
             prepareDark()
         }
@@ -153,6 +153,7 @@ class MainViewController: UIViewController{
         }))
         finishedAlert?.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             self.pushupController.createSetOfPushups(time: self.pSetTime)
+            print(self.pSetTime)
             
             //TESTING
             self.testController.addSet()
