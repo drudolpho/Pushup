@@ -12,7 +12,7 @@ import Charts
 
 class DataViewController: UIViewController {
     
-    var setData: [SetOfPushups] = []
+    var dataController: DataController?
     
     @IBOutlet weak var totalPushupsLabel: UILabel!
     @IBOutlet weak var avgPushupsLabel: UILabel!
@@ -24,7 +24,8 @@ class DataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        dataController?.fetchDayData()
+        dataController?.fetchSetData()
         updateViews()
         setupChart()
         
@@ -34,6 +35,55 @@ class DataViewController: UIViewController {
         view.addGestureRecognizer(edgePan)
     }
     
+    @IBAction func backTapped(sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func resetTapped(sender: UIButton) {
+        let resetAlert = UIAlertController(title: "Are you sure you want to do this?", message: "All of your saved data will be lost", preferredStyle: .actionSheet)
+        resetAlert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { (_) in
+            
+            self.dataController?.deleteData(completion: { (deletionWorked) in
+                if deletionWorked {
+                    DispatchQueue.main.async {
+                        self.dataController?.fetchSetData()
+                        self.updateViews()
+                        self.setupChart()
+                    }
+                } else {
+                    let errorAlert = UIAlertController(title: "There was a problem deleting your data", message: "Please close the app and re-try", preferredStyle: .actionSheet)
+                    errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    DispatchQueue.main.async {
+                        self.present(errorAlert, animated: true)
+                    }
+                }
+            })
+        }))
+        resetAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(resetAlert, animated: true)
+    }
+    
+    func updateViews() {
+        guard let dataController = dataController else { return }
+        //Total Pushups
+        let totalPushups = dataController.getTotalPushups()
+        totalPushupsLabel.text = "\(totalPushups)"
+        //Average Pushups per set
+        let avgPushups = dataController.getAvgPushups(totalPushups: totalPushups)
+        avgPushupsLabel.text = "\(avgPushups)"
+        //Total Sets
+        let totalSets = dataController.setData.count
+        totalSetsLabel.text = "\(totalSets)"
+        //Total time
+        totalTimeLabel.text = dataController.getTotalTimeAsString()
+        
+        if totalPushups == 0 {
+            noDataLabel.isHidden = false
+        } else {
+            noDataLabel.isHidden = true
+        }
+    }
+    
     @objc func screenEdgeSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         if recognizer.state == .recognized {
             self.navigationController?.popToRootViewController(animated: true)
@@ -41,17 +91,19 @@ class DataViewController: UIViewController {
     }
     
     func setupChart() {
+        guard let dataController = dataController, let dayData = dataController.dayData else { return }
+        guard dayData.count > 0 else { return }
         //Fetch Data
         var entries: [ChartDataEntry] = []
         var count: Int = 0
-        for set in setData {
+        for day in dayData {
             count += 1
-            let entry = ChartDataEntry(x: Double(count), y: Double(set.pushups))
+            let entry = ChartDataEntry(x: Double(count), y: Double(day.average))
             entries.append(entry)
         }
         let set = LineChartDataSet(entries: entries, label: "")
         
-        if setData.count < 2 {
+        if dayData.count < 2 {
             set.drawCirclesEnabled = true
             set.drawCircleHoleEnabled = false
             set.circleColors = [NSUIColor(red: 178/255, green: 255/255, blue: 176/255, alpha: 1.0)]
@@ -63,7 +115,7 @@ class DataViewController: UIViewController {
         set.mode = .cubicBezier
         set.lineWidth = 3
         set.setColor(NSUIColor(red: 178/255, green: 255/255, blue: 176/255, alpha: 1.0))
-//        set.fill = Fill(.white)
+        //        set.fill = Fill(.white)
         set.fillAlpha = 0.6
         set.drawHorizontalHighlightIndicatorEnabled = false
         set.highlightColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
@@ -81,7 +133,7 @@ class DataViewController: UIViewController {
         
         
         //Chart Setup
-//        lineChartView.backgroundColor = chartFrameView.backgroundColor
+        //        lineChartView.backgroundColor = chartFrameView.backgroundColor
         lineChartView.backgroundColor = .clear
         lineChartView.drawGridBackgroundEnabled = false
         lineChartView.rightAxis.enabled = false
@@ -100,119 +152,13 @@ class DataViewController: UIViewController {
         lineChartView.xAxis.labelTextColor = totalPushupsLabel.textColor
         lineChartView.xAxis.drawGridLinesEnabled = false
         
-//        lineChartView.animate(xAxisDuration: 1)
-    }
-    
-    
-    @IBAction func backTapped(sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    @IBAction func resetTapped(sender: UIButton) {
-        let resetAlert = UIAlertController(title: "Are you sure you want to do this?", message: "All of your saved data will be lost", preferredStyle: .actionSheet)
-        resetAlert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { (_) in
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SetOfPushups")
-
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-            do {
-                try CoreDataStack.shared.mainContext.execute(batchDeleteRequest)
-                DispatchQueue.main.async {
-                    self.fetchData()
-                    self.updateViews()
-                    self.setupChart()
-                }
-            } catch {
-                let errorAlert = UIAlertController(title: "There was a problem deleting your data", message: "Please close the app and re-try", preferredStyle: .actionSheet)
-                errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                DispatchQueue.main.async {
-                    self.present(errorAlert, animated: true)
-                }
-            }
-        }))
-        resetAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(resetAlert, animated: true)
-    }
-    
-    func updateViews() {
-        //Total Pushups
-        let totalPushups = getTotalPushups()
-        totalPushupsLabel.text = "\(totalPushups)"
-        //Average Pushups per set
-        let avgPushups = getAvgPushups(totalPushups: totalPushups)
-        avgPushupsLabel.text = "\(avgPushups)"
-        //Total Sets
-        let totalSets = setData.count
-        totalSetsLabel.text = "\(totalSets)"
-        //Total time
-        totalTimeLabel.text = getTotalTimeAsString()
-        
-        if totalPushups == 0 {
-            noDataLabel.isHidden = false
-        } else {
-            noDataLabel.isHidden = true
-        }
-    }
-    
-    private func getTotalTimeAsString() -> String {
-        var sum = 0
-        for set in setData {
-            sum += Int(set.time)
-            print(set.time)
-        }
-        
-        let minutes = sum / 60
-        let seconds = sum % 60
-        var secondString = ""
-        
-        if seconds < 10 {
-            secondString = "0\(seconds)"
-        } else {
-            secondString = "\(seconds)"
-        }
-        
-        return "\(minutes):\(secondString)"
-    }
-    
-    private func getTotalPushups() -> Int{
-        var sum = 0
-        for set in setData {
-            sum += Int(set.pushups)
-        }
-        return sum
-    }
-    
-    private func getAvgPushups(totalPushups: Int) -> Int{
-        let sets = setData.count
-        if sets > 0 {
-            let answer = Int(totalPushups / setData.count)
-            return answer
-        } else {
-            return 0
-        }
-    }
-    
-    private func getDailyAvg() {
-        
-    }
-    
-    func fetchData() {
-        let moc = CoreDataStack.shared.mainContext
-        let dataFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SetOfPushups")
-        let sort = NSSortDescriptor(key: "date", ascending: true)
-        dataFetch.sortDescriptors = [sort]
-         
-        do {
-            let fetchedData = try moc.fetch(dataFetch) as! [SetOfPushups]
-            self.setData = fetchedData
-        } catch {
-            fatalError("Failed to fetch pushup data: \(error)")
-        }
+        //        lineChartView.animate(xAxisDuration: 1)
     }
 }
+    
 
-extension DataViewController: ChartViewDelegate {
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        // Handle selected data
-    }
-}
+//extension DataViewController: ChartViewDelegate {
+//    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+//        // Handle selected data
+//    }
+//}

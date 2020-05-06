@@ -16,6 +16,7 @@ protocol PushupControllerDelegate {
 class PushupController {
     
     var delegate: PushupControllerDelegate?
+    var dataController: DataController?
     var pushupCount = 0 {
         didSet {
             delegate?.updatePushupLabel(pushups: pushupCount)
@@ -23,7 +24,8 @@ class PushupController {
     }
     
     func createSetOfPushups(time: Int) {
-        let _ = SetOfPushups(pushups: pushupCount, time: time)
+        let set = SetOfPushups(pushups: pushupCount, time: time)
+        dataController?.updateTodaysData(set: set)
         do {
             try CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
         } catch {
