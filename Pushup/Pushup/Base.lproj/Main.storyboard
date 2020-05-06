@@ -36,7 +36,7 @@
                                         </constraints>
                                         <state key="normal" image="graphArrow"/>
                                         <connections>
-                                            <segue destination="eWW-Sb-gWb" kind="show" id="3vm-eU-2i1"/>
+                                            <segue destination="eWW-Sb-gWb" kind="show" identifier="DataSegue" id="3vm-eU-2i1"/>
                                         </connections>
                                     </button>
                                 </subviews>

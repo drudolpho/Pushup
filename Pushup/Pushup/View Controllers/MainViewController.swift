@@ -41,6 +41,8 @@ class MainViewController: UIViewController{
         super.viewDidLoad()
         setupViews()
         setupControllers()
+        
+        //need to create a day, as well as all of the days since the last day. When creating a pushupSet it has to update the current day with the new info.
     }
     
     func prepareDark() {
@@ -81,6 +83,7 @@ class MainViewController: UIViewController{
     
     func setupControllers() {
         pushupController.delegate = self
+        pushupController.dataController = dataController
         cameraController.setUpCamera()
         cameraController.audioController = audioController
         cameraController.pushupController = pushupController
@@ -153,8 +156,11 @@ class MainViewController: UIViewController{
             self.reset()
         }))
         finishedAlert?.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+            if self.dataController.dayIsSet == false {
+                let day = Day(pushups: 0, average: 0, sets: 0)
+                self.dataController.dayData?.append(day)
+            }
             self.pushupController.createSetOfPushups(time: self.pSetTime)
-            print(self.pSetTime)
             
             //TESTING
             self.testController.addSet()
@@ -164,6 +170,14 @@ class MainViewController: UIViewController{
             
             self.reset()
         }))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DataSegue" {
+            if let viewController = segue.destination as? DataViewController {
+                viewController.dataController = dataController
+            }
+        }
     }
 }
 
