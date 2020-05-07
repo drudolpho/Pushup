@@ -156,10 +156,6 @@ class MainViewController: UIViewController{
             self.reset()
         }))
         finishedAlert?.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            if self.dataController.dayIsSet == false {
-                let day = Day(pushups: 0, average: 0, sets: 0)
-                self.dataController.dayData?.append(day)
-            }
             self.pushupController.createSetOfPushups(time: self.pSetTime)
             
             //TESTING

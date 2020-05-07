@@ -24,8 +24,10 @@ class PushupController {
     }
     
     func createSetOfPushups(time: Int) {
-        let set = SetOfPushups(pushups: pushupCount, time: time)
-        dataController?.updateTodaysData(set: set)
+        guard let dataController = dataController else { return }
+        let set = SetOfPushups(pushups: pushupCount, time: time, date: dataController.date)
+        dataController.setData.append(set)
+        dataController.updateTodaysData(set: set)
         do {
             try CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
         } catch {

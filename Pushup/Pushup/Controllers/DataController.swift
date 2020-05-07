@@ -12,21 +12,29 @@ import CoreData
 class DataController {
     
     var dateAsString = "MM/dd/yyyy"
-    let date = Date()
-    let formatter = DateFormatter()
-    var dayIsSet = false
-    var setData: [SetOfPushups] = []
-    var dayData: [Day]? {
-        didSet {
-            createDays()
-        }
+//    let date = Date()
+    var date: Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = 2020
+        dateComponents.month = 5
+        dateComponents.day = 16
+        dateComponents.hour = 8
+        dateComponents.minute = 33
+
+        let userCalendar = Calendar.current // user calendar
+        return userCalendar.date(from: dateComponents)!
     }
+    
+    let formatter = DateFormatter()
+//    var dayIsSet = false
+    var setData: [SetOfPushups] = []
+    var dayData: [Day]?
     
     func updateTodaysData(set: SetOfPushups) {
         guard let today = dayData?.last else { return }
         today.pushups += set.pushups
         
-        let totalDays = getDaysSince(day1: dayData?.first?.date ?? date, day2: date)
+        let totalDays = getDaysSince(day1: dayData?.first?.date ?? date, day2: date) + 1
         let totalPushups = getTotalPushups()
         if totalDays == 0 {
             today.average += set.pushups
@@ -34,29 +42,38 @@ class DataController {
             let avg = totalPushups / totalDays
             today.average = Int32(avg)
         }
-        
+        today.sets += 1
     }
     
     func createDays() { //Creates days for each day missed, for graphing daily average. Or just creates current day.
-        guard let lastDay = dayData?.last, let firstDay = dayData?.first else { return }
+        guard let lastDay = dayData?.last else {
+            let day = Day(pushups: 0, average: 0, sets: 0, date: date, count: 1)
+            self.dayData?.append(day)
+            return
+        }
         let daysSinceLast = getDaysSince(day1: lastDay.date ?? date, day2: date)
-        let totalDays = getDaysSince(day1: firstDay.date ?? date, day2: lastDay.date ?? date)
+        let dayCount = Int(lastDay.count)
         let totalPushups = getTotalPushups()
         
         if daysSinceLast == 1{
-            let avg = totalPushups / (totalDays + 1)
-            let day = Day(pushups: 0, average: avg, sets: 0)
+            
+            let newCount = dayCount + 1
+            let avg = totalPushups / (newCount)
+            let day = Day(pushups: 0, average: avg, sets: 0, date: date, count: newCount)
             self.dayData?.append(day)
+            
         } else if daysSinceLast > 1 {
-            for i in 1...daysSinceLast - 1 {
-                let avg = totalPushups / (totalDays + i)
-                let _ = Day(pushups: 0, average: avg, sets: 0)
+            
+            for i in 1...daysSinceLast {
+                
+                let newCount = dayCount + i
+                let modifiedDate = Calendar.current.date(byAdding: .day, value: i, to: lastDay.date ?? date) ?? date
+                let avg = totalPushups / (newCount)
+                let day = Day(pushups: 0, average: avg, sets: 0, date: modifiedDate, count: newCount)
+                self.dayData?.append(day)
             }
-            let avg = totalPushups / (totalDays + 1)
-            let day = Day(pushups: 0, average: avg, sets: 0)
-            self.dayData?.append(day)
         }
-        dayIsSet = true
+        
         do {  //Save Core Data
             try CoreDataStack.shared.save(context: CoreDataStack.shared.mainContext)
         } catch {
@@ -127,6 +144,7 @@ class DataController {
         do {
             let fetchedData = try moc.fetch(dataFetch) as! [Day]
             dayData = fetchedData
+            createDays()
         } catch {
             fatalError("Failed to fetch pushup data: \(error)")
         }
@@ -158,7 +176,7 @@ class DataController {
             try CoreDataStack.shared.mainContext.execute(batchDeleteRequestDay)
             self.fetchDayData()
             self.fetchSetData()
-            dayIsSet = false
+            self.createDays()
         } catch {
             print("Error deleting Data")
             completion(false)

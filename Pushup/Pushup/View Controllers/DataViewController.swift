@@ -100,6 +100,7 @@ class DataViewController: UIViewController {
             count += 1
             let entry = ChartDataEntry(x: Double(count), y: Double(day.average))
             entries.append(entry)
+            print(day)
         }
         let set = LineChartDataSet(entries: entries, label: "")
         
@@ -142,12 +143,18 @@ class DataViewController: UIViewController {
         let yAxis = lineChartView.leftAxis
         yAxis.labelFont = .boldSystemFont(ofSize: 12) //Make custom font
         yAxis.setLabelCount(6, force: false)
+//        yAxis.axisMinimum = 0
+//        yAxis.axisMinLabels = 5
+//        yAxis.granularityEnabled = true
+//        yAxis.granularity = 1
         yAxis.axisLineColor = totalPushupsLabel.textColor
         yAxis.labelTextColor = totalPushupsLabel.textColor
         yAxis.gridColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1.0)
         
         lineChartView.xAxis.labelPosition = .bottom
-        lineChartView.xAxis.setLabelCount(8, force: false)
+        lineChartView.xAxis.setLabelCount(7, force: false)
+//        lineChartView.xAxis.granularityEnabled = true
+//        lineChartView.xAxis.granularity = 1
         lineChartView.xAxis.axisLineColor = totalPushupsLabel.textColor
         lineChartView.xAxis.labelTextColor = totalPushupsLabel.textColor
         lineChartView.xAxis.drawGridLinesEnabled = false
