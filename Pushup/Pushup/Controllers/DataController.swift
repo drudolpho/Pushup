@@ -16,7 +16,7 @@ class DataController {
     var date: Date {
         var dateComponents = DateComponents()
         dateComponents.year = 2020
-        dateComponents.month = 5
+        dateComponents.month = 6
         dateComponents.day = 16
         dateComponents.hour = 8
         dateComponents.minute = 33
@@ -25,7 +25,7 @@ class DataController {
         return userCalendar.date(from: dateComponents)!
     }
     
-    let formatter = DateFormatter()
+    var formatter = DateFormatter()
 //    var dayIsSet = false
     var setData: [SetOfPushups] = []
     var dayData: [Day]?
@@ -92,10 +92,10 @@ class DataController {
     }
     
     init() {
-        formatter.dateFormat = "MM/dd/yyyy"
+        formatter.dateFormat = "MM/dd"
         dateAsString = formatter.string(from: date)
-        fetchSetData()
-        fetchDayData()
+//        fetchSetData()
+//        fetchDayData()
     }
     
     func getTotalTimeAsString() -> String {
@@ -123,6 +123,17 @@ class DataController {
             sum += Int(set.pushups)
         }
         return sum
+    }
+    
+    func getHighestDayAvg() -> Int {
+        guard let dayData = dayData else { return 0}
+        var high = 0
+        for day in dayData {
+            if day.average > high {
+                high = Int(day.average)
+            }
+        }
+        return high
     }
     
     func getAvgPushups(totalPushups: Int) -> Int{
