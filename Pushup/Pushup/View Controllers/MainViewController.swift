@@ -11,7 +11,7 @@ import AVFoundation
 import CoreData
 
 
-class MainViewController: UIViewController{
+class MainViewController: UIViewController {
    
     //Controllers
     let testController = TestController()
@@ -31,23 +31,26 @@ class MainViewController: UIViewController{
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pushupLabel: UILabel!
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var instructionView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var startImage: UIImageView!
+    @IBOutlet weak var instructionCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupControllers()
-        
+        instructionCollectionView.delegate = self
+        instructionCollectionView.dataSource = self
+        instructionCollectionView.isPagingEnabled = true
+        instructionCollectionView.backgroundColor = topView.backgroundColor
         //need to create a day, as well as all of the days since the last day. When creating a pushupSet it has to update the current day with the new info.
     }
     
     func prepareDark() {
         topView.isHidden = true
-        instructionView.isHidden = true
+//        instructionView.isHidden = true
         quoteLabel.isHidden = true
         pushupLabel.isHidden = false
         soundButton.isHidden = false
@@ -58,7 +61,7 @@ class MainViewController: UIViewController{
     
     func prepareLight() {
         topView.isHidden = false
-        instructionView.isHidden = false
+//        instructionView.isHidden = false
         quoteLabel.isHidden = false
         soundButton.isHidden = true
         pushupLabel.isHidden = true
@@ -70,11 +73,11 @@ class MainViewController: UIViewController{
         pushupLabel.isHidden = true
         soundButton.isHidden = true
         pushupLabel.text = String(countDownTime)
-        instructionView.layer.cornerRadius = 40
-        instructionView.layer.shadowColor = UIColor.lightGray.cgColor
-        instructionView.layer.shadowOpacity = 0.3
-        instructionView.layer.shadowOffset = .zero
-        instructionView.layer.shadowRadius = 10
+//        instructionView.layer.cornerRadius = 40
+//        instructionView.layer.shadowColor = UIColor.lightGray.cgColor
+//        instructionView.layer.shadowOpacity = 0.3
+//        instructionView.layer.shadowOffset = .zero
+//        instructionView.layer.shadowRadius = 10
         //Nav Bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -189,5 +192,27 @@ extension MainViewController: PushupControllerDelegate {
                 self.pushupLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }
         }
+    }
+}
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath)
+        
+        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
