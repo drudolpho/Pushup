@@ -1,5 +1,5 @@
 //
-//  InstructionCollectionViewCell.swift
+//  Instruction2CollectionViewCell.swift
 //  Pushup
 //
 //  Created by Dennis Rudolph on 5/8/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InstructionCollectionViewCell: UICollectionViewCell {
+class Instruction2CollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
        super.awakeFromNib()

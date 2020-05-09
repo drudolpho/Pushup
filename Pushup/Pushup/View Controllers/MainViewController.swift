@@ -11,7 +11,7 @@ import AVFoundation
 import CoreData
 
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIGestureRecognizerDelegate {
    
     //Controllers
     let testController = TestController()
@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var instructionCollectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,8 @@ class MainViewController: UIViewController {
         instructionCollectionView.dataSource = self
         instructionCollectionView.isPagingEnabled = true
         instructionCollectionView.backgroundColor = topView.backgroundColor
+        instructionCollectionView.showsHorizontalScrollIndicator = false
+        self.view.bringSubviewToFront(pageControl)
         //need to create a day, as well as all of the days since the last day. When creating a pushupSet it has to update the current day with the new info.
     }
     
@@ -67,6 +70,11 @@ class MainViewController: UIViewController {
         pushupLabel.isHidden = true
         bottomView.backgroundColor = self.topView.backgroundColor
         self.view.backgroundColor = self.topView.backgroundColor
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        pageControl.currentPage = Int(x / instructionCollectionView.frame.width)
     }
     
     func setupViews() {
@@ -202,14 +210,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath)
-        
-        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
-        return cell
+        if indexPath.row == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstCell", for: indexPath) as? InstructionCollectionViewCell else { return UICollectionViewCell()}
+//            cell.superview?.bringSubviewToFront(cell)
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SecondCell", for: indexPath) as? Instruction2CollectionViewCell else { return UICollectionViewCell()}
+            
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

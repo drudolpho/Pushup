@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2330F0CB2DF08C3DB1C8D628 /* Pods_Pushup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC2BB4D22B79B21FD09963 /* Pods_Pushup.framework */; };
 		9503AA792465EC8B001C6378 /* InstructionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503AA782465EC8B001C6378 /* InstructionCollectionViewCell.swift */; };
+		9503AA7B2465F448001C6378 /* Instruction2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503AA7A2465F448001C6378 /* Instruction2CollectionViewCell.swift */; };
 		9527D1B4244B7D6E00FD6ECD /* Pushup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1B2244B7D6E00FD6ECD /* Pushup.xcdatamodeld */; };
 		9527D1B7244B843900FD6ECD /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1B6244B843900FD6ECD /* CoreDataStack.swift */; };
 		9527D1B9244B849900FD6ECD /* Set+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9527D1B8244B849900FD6ECD /* Set+Convenience.swift */; };
@@ -33,6 +34,7 @@
 		0DAC2BB4D22B79B21FD09963 /* Pods_Pushup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pushup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C4E4FD3D3B4F4B9236B3F0 /* Pods-Pushup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pushup.debug.xcconfig"; path = "Target Support Files/Pods-Pushup/Pods-Pushup.debug.xcconfig"; sourceTree = "<group>"; };
 		9503AA782465EC8B001C6378 /* InstructionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCollectionViewCell.swift; sourceTree = "<group>"; };
+		9503AA7A2465F448001C6378 /* Instruction2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction2CollectionViewCell.swift; sourceTree = "<group>"; };
 		9527D1B3244B7D6E00FD6ECD /* Pushup.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pushup.xcdatamodel; sourceTree = "<group>"; };
 		9527D1B6244B843900FD6ECD /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		9527D1B8244B849900FD6ECD /* Set+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+Convenience.swift"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				9503AA782465EC8B001C6378 /* InstructionCollectionViewCell.swift */,
+				9503AA7A2465F448001C6378 /* Instruction2CollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9503AA7B2465F448001C6378 /* Instruction2CollectionViewCell.swift in Sources */,
 				9527D1B7244B843900FD6ECD /* CoreDataStack.swift in Sources */,
 				95D5D5D8244CC512002FB044 /* AudioController.swift in Sources */,
 				9527D1BB244B89E300FD6ECD /* DataViewController.swift in Sources */,

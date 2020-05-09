@@ -30,11 +30,13 @@ class DataViewController: UIViewController {
         dataController?.fetchSetData()
         updateViews()
         setupChart()
-        
-        let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
-        edgePan.edges = .left
-        
-        view.addGestureRecognizer(edgePan)
+
+        let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
+        view.addGestureRecognizer(backSwipe)
+    }
+    
+    @objc func handleSwipe(sender: UISwipeGestureRecognizer) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func backTapped(sender: UIButton) {
