@@ -95,8 +95,8 @@
 		9527D1BC244B8E6900FD6ECD /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9527D1BA244B89E300FD6ECD /* DataViewController.swift */,
 				95E774F8244759FF001BD477 /* MainViewController.swift */,
+				9527D1BA244B89E300FD6ECD /* DataViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
