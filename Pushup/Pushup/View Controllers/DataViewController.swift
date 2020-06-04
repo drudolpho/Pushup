@@ -117,7 +117,11 @@ class DataViewController: UIViewController {
         yAxis.labelFont = UIFont(name: "SeoulNamsan", size: 12) ?? UIFont.boldSystemFont(ofSize: 10) //Make custom font
 //        yAxis.setLabelCount(6, force: false)
         yAxis.axisMinimum = 0
-        yAxis.axisMaximum = Double(dataController.getHighestDayAvg()) * 1.5
+        var highest = Double(dataController.getHighestDayAvg())
+        if highest < 1 {
+            highest = 30
+        }
+        yAxis.axisMaximum = highest * 1.5
         yAxis.axisMinLabels = 5
         yAxis.granularityEnabled = true
         yAxis.granularity = 1
@@ -148,7 +152,7 @@ class DataViewController: UIViewController {
         
         //Data Setup
         if dayData.count <= 1 {
-            guard dayData.first?.pushups ?? 0 > Int32(0) else { return }
+//            guard dayData.first?.pushups ?? 0 > Int32(0) else { return }
         }
         
         var entries: [ChartDataEntry] = []
