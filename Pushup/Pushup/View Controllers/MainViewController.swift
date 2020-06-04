@@ -13,6 +13,8 @@ import CoreData
 
 class MainViewController: UIViewController, UIGestureRecognizerDelegate {
    
+    let defaults = UserDefaults.standard
+    
     //Controllers
     let testController = TestController()
     let cameraController = CameraController()
@@ -53,18 +55,22 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func prepareDark() {
         topView.isHidden = true
-//        instructionView.isHidden = true
+        instructionCollectionView.isHidden = true
+        pageControl.isHidden = true
         quoteLabel.isHidden = true
         pushupLabel.isHidden = false
         soundButton.isHidden = false
         pushupLabel.text = String(countDownTime)
+        setSpeakOn(bool: !defaults.bool(forKey: "sound"))
         bottomView.backgroundColor = .black
         self.view.backgroundColor = .black
+        
     }
     
     func prepareLight() {
         topView.isHidden = false
-//        instructionView.isHidden = false
+        instructionCollectionView.isHidden = false
+        pageControl.isHidden = false
         quoteLabel.isHidden = false
         soundButton.isHidden = true
         pushupLabel.isHidden = true
@@ -106,7 +112,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         if cameraController.captureSession.isRunning {
             cameraController.captureSession.stopRunning()
             stopTimer()
-            startImage.image = UIImage(named: "StartButton")
+            startImage.image = UIImage(named: "ReadyButton")
             setupAlert()
             prepareLight()
             self.present(finishedAlert!, animated: true)
@@ -119,10 +125,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func soundTapped(sender: UIButton) {
-        
+        setSpeakOn(bool: audioController.speakOn)
     }
     
     //Timer Methods
+    private func setSpeakOn(bool: Bool) {
+        if bool == false {
+            audioController.speakOn = true
+            soundButton.setImage(UIImage(named: "speak"), for: .normal)
+            defaults.set(true, forKey: "sound")
+        } else if bool == true {
+            audioController.speakOn = false
+            soundButton.setImage(UIImage(named: "sound"), for: .normal)
+            defaults.set(false, forKey: "sound")
+        }
+    }
     
     private func startCountDown() {
         timer.invalidate()
@@ -212,7 +229,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if indexPath.row == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstCell", for: indexPath) as? InstructionCollectionViewCell else { return UICollectionViewCell()}
-//            cell.superview?.bringSubviewToFront(cell)
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SecondCell", for: indexPath) as? Instruction2CollectionViewCell else { return UICollectionViewCell()}
@@ -222,7 +238,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 35)
+        let height = collectionView.frame.size.height
+        let width = collectionView.frame.size.width
+        return CGSize(width: width, height: height - 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

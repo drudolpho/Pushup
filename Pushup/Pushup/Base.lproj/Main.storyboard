@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pushups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO1-H4-0S0">
-                                        <rect key="frame" x="30" y="125.5" width="162" height="45.5"/>
+                                        <rect key="frame" x="30" y="118.5" width="176" height="52.5"/>
                                         <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="45"/>
                                         <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -52,7 +52,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOj-Ly-4jO" userLabel="Bottom View">
                                 <rect key="frame" x="0.0" y="696" width="414" height="200"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StartButton" translatesAutoresizingMaskIntoConstraints="NO" id="hBt-v0-7r6">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReadyButton" translatesAutoresizingMaskIntoConstraints="NO" id="hBt-v0-7r6">
                                         <rect key="frame" x="232" y="18" width="182" height="182"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hBt-v0-7r6" secondAttribute="height" multiplier="1:1" id="dDl-nF-W6V"/>
@@ -106,7 +106,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi0-AD-J6U">
-                                <rect key="frame" x="172" y="377.5" width="70" height="141"/>
+                                <rect key="frame" x="168" y="366.5" width="78" height="163.5"/>
                                 <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="140"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -114,7 +114,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HYr-As-9LT">
                                 <rect key="frame" x="0.0" y="171" width="414" height="533"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ePd-zE-0Kz">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ePd-zE-0Kz">
                                     <size key="itemSize" width="209" height="222"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -128,16 +128,61 @@
                                             <rect key="frame" x="0.0" y="0.0" width="407" height="441"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready Set go instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvf-oy-nye">
-                                                    <rect key="frame" x="105.5" y="210" width="196" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="75" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbo-HS-KfH">
+                                                    <rect key="frame" x="50" y="66" width="86" height="309"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjY-Vx-GlA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="35"/>
+                                                            <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="30"/>
+                                                            <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDV-q8-ai3">
+                                                            <rect key="frame" x="0.0" y="137" width="45" height="35"/>
+                                                            <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="30"/>
+                                                            <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tq-hR-RyI">
+                                                            <rect key="frame" x="0.0" y="274" width="40" height="35"/>
+                                                            <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="30"/>
+                                                            <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushUP" translatesAutoresizingMaskIntoConstraints="NO" id="tzB-1b-tj7">
+                                                    <rect key="frame" x="204" y="168" width="153" height="105"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="tzB-1b-tj7" secondAttribute="height" multiplier="51:35" id="o8d-FZ-LLP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushDOWN" translatesAutoresizingMaskIntoConstraints="NO" id="Mnq-Tt-v9k">
+                                                    <rect key="frame" x="204" y="305" width="153" height="105"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Mnq-Tt-v9k" secondAttribute="height" multiplier="51:35" id="obr-UQ-f6D"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PSphone" translatesAutoresizingMaskIntoConstraints="NO" id="ITc-VW-Vnx">
+                                                    <rect key="frame" x="274" y="54" width="63" height="59"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="ITc-VW-Vnx" secondAttribute="height" multiplier="63:59" id="PGf-fp-0MH"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lvf-oy-nye" firstAttribute="centerY" secondItem="9aH-rf-NjK" secondAttribute="centerY" id="RVk-uy-AIC"/>
-                                                <constraint firstItem="lvf-oy-nye" firstAttribute="centerX" secondItem="9aH-rf-NjK" secondAttribute="centerX" id="mNw-JM-tTY"/>
+                                                <constraint firstAttribute="trailing" secondItem="ITc-VW-Vnx" secondAttribute="trailing" constant="70" id="2Ow-qd-x25"/>
+                                                <constraint firstItem="tzB-1b-tj7" firstAttribute="height" secondItem="9aH-rf-NjK" secondAttribute="height" multiplier="0.238095" id="4gY-Q4-1Ls"/>
+                                                <constraint firstItem="ITc-VW-Vnx" firstAttribute="height" secondItem="9aH-rf-NjK" secondAttribute="height" multiplier="0.133787" id="F3O-uL-Q1q"/>
+                                                <constraint firstItem="Mnq-Tt-v9k" firstAttribute="height" secondItem="9aH-rf-NjK" secondAttribute="height" multiplier="0.238095" id="I9H-Xn-1nS"/>
+                                                <constraint firstItem="ITc-VW-Vnx" firstAttribute="centerY" secondItem="yjY-Vx-GlA" secondAttribute="centerY" id="TFc-wb-74B"/>
+                                                <constraint firstItem="tzB-1b-tj7" firstAttribute="centerY" secondItem="QDV-q8-ai3" secondAttribute="centerY" id="ZEb-Pe-nB5"/>
+                                                <constraint firstAttribute="trailing" secondItem="tzB-1b-tj7" secondAttribute="trailing" constant="50" id="ZZZ-ok-QJE"/>
+                                                <constraint firstItem="hbo-HS-KfH" firstAttribute="centerY" secondItem="9aH-rf-NjK" secondAttribute="centerY" id="cck-ZO-Hqf"/>
+                                                <constraint firstItem="hbo-HS-KfH" firstAttribute="leading" secondItem="9aH-rf-NjK" secondAttribute="leading" constant="50" id="lyH-mu-yk5"/>
+                                                <constraint firstItem="hbo-HS-KfH" firstAttribute="height" secondItem="9aH-rf-NjK" secondAttribute="height" multiplier="0.7" id="o0Y-ub-fna"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mnq-Tt-v9k" secondAttribute="trailing" constant="50" id="sjy-b7-cdA"/>
+                                                <constraint firstItem="Mnq-Tt-v9k" firstAttribute="centerY" secondItem="8tq-hR-RyI" secondAttribute="centerY" id="wWT-ZV-jpx"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="407" height="441"/>
@@ -145,21 +190,9 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SecondCell" id="WfJ-HC-iVE" customClass="Instruction2CollectionViewCell" customModule="Pushup" customModuleProvider="target">
                                         <rect key="frame" x="417" y="44" width="390" height="445"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wsh-hQ-axg">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Wsh-hQ-axg">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="445"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For best use instruction label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvZ-Rx-nen">
-                                                    <rect key="frame" x="84" y="212" width="222" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="VvZ-Rx-nen" firstAttribute="centerX" secondItem="Wsh-hQ-axg" secondAttribute="centerX" id="O3o-Cn-5gj"/>
-                                                <constraint firstItem="VvZ-Rx-nen" firstAttribute="centerY" secondItem="Wsh-hQ-axg" secondAttribute="centerY" id="wNR-wF-VBi"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="390" height="445"/>
                                     </collectionViewCell>
@@ -213,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918.840579710145" y="125.22321428571428"/>
+            <point key="canvasLocation" x="1917.5999999999999" y="124.58770614692655"/>
         </scene>
         <!--Data-->
         <scene sceneID="MYg-QG-sGN">
@@ -395,16 +428,16 @@
                                             <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="PhX-C0-0wB">
-                                            <rect key="frame" x="107" y="17.5" width="160.5" height="17.5"/>
+                                            <rect key="frame" x="105" y="15" width="164" height="20"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Avg: 33" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAi-Pa-cQL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="99" height="17.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05/22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yw-oc-7PR">
-                                                    <rect key="frame" x="120" y="0.0" width="40.5" height="17.5"/>
+                                                    <rect key="frame" x="120.5" y="0.0" width="43.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -477,8 +510,11 @@
     </scenes>
     <resources>
         <image name="BackButton" width="264" height="92"/>
-        <image name="StartButton" width="644" height="616"/>
+        <image name="PSphone" width="87" height="140"/>
+        <image name="ReadyButton" width="644" height="616"/>
         <image name="graphArrow" width="162" height="93"/>
+        <image name="pushDOWN" width="572" height="196"/>
+        <image name="pushUP" width="572" height="324"/>
         <image name="sound" width="114" height="105"/>
     </resources>
 </document>

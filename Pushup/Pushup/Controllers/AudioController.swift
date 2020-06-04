@@ -18,7 +18,7 @@ enum AudioType {
 class AudioController {
     
     var audioPlayer = AVAudioPlayer()
-    var audioType: AudioType = .speak
+    var speakOn: Bool = false
     
     init() {
         setupAudio()
@@ -27,13 +27,10 @@ class AudioController {
     //Play Sounds
     
     func playChosenAudio(pushups: Int?) {
-        switch audioType {
-        case .speak:
+        if speakOn{
             speakCount(pushups: pushups ?? 0)
-        case .sound:
+        } else {
             playPockAudio()
-        default:
-            return
         }
     }
     
