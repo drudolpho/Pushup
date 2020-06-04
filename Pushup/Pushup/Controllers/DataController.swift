@@ -17,7 +17,7 @@ class DataController {
         var dateComponents = DateComponents()
         dateComponents.year = 2020
         dateComponents.month = 6
-        dateComponents.day = 16
+        dateComponents.day = 26
         dateComponents.hour = 8
         dateComponents.minute = 33
 
@@ -187,7 +187,7 @@ class DataController {
             try CoreDataStack.shared.mainContext.execute(batchDeleteRequestDay)
             self.fetchDayData()
             self.fetchSetData()
-            self.createDays()
+//            self.createDays()
         } catch {
             print("Error deleting Data")
             completion(false)
