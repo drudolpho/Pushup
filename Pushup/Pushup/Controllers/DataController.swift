@@ -12,12 +12,14 @@ import CoreData
 class DataController {
     
     var dateAsString = "MM/dd/yyyy"
+    let defaults = UserDefaults.standard
+    
 //    let date = Date()
     var date: Date {
         var dateComponents = DateComponents()
         dateComponents.year = 2020
         dateComponents.month = 6
-        dateComponents.day = 26
+        dateComponents.day = 17
         dateComponents.hour = 8
         dateComponents.minute = 33
 
@@ -30,8 +32,16 @@ class DataController {
     var setData: [SetOfPushups] = []
     var dayData: [Day]?
     
+    init() {
+        formatter.dateFormat = "MM/dd"
+        dateAsString = formatter.string(from: date)
+        //        fetchSetData()
+        //        fetchDayData()
+    }
+    
     func updateTodaysData(set: SetOfPushups) {
         guard let today = dayData?.last else { return }
+        
         today.pushups += set.pushups
         
         let totalDays = getDaysSince(day1: dayData?.first?.date ?? date, day2: date) + 1
@@ -43,12 +53,28 @@ class DataController {
             today.average = Int32(avg)
         }
         today.sets += 1
+        
+        //updates streak
+        if today.sets == 1 {
+            if let lastDay = dayData?.penultimate() {
+                if lastDay.sets > 0 {
+                    let streak = defaults.integer(forKey: "streak")
+                    defaults.set(streak + 1, forKey: "streak")
+                } else if lastDay.sets == 0 {
+                    defaults.set(1, forKey: "streak")
+                }
+            } else {
+                let streak = defaults.integer(forKey: "streak")
+                defaults.set(streak + 1, forKey: "streak")
+            }
+        }
     }
     
     func createDays() { //Creates days for each day missed, for graphing daily average. Or just creates current day.
         guard let lastDay = dayData?.last else {
             let day = Day(pushups: 0, average: 0, sets: 0, date: date, count: 1)
             self.dayData?.append(day)
+            defaults.set(0, forKey: "streak")
             return
         }
         let daysSinceLast = getDaysSince(day1: lastDay.date ?? date, day2: date)
@@ -64,6 +90,8 @@ class DataController {
             
         } else if daysSinceLast > 1 {
             
+            defaults.set(0, forKey: "streak")
+        
             for i in 1...daysSinceLast {
                 
                 let newCount = dayCount + i
@@ -91,11 +119,9 @@ class DataController {
         return components.day ?? 0
     }
     
-    init() {
-        formatter.dateFormat = "MM/dd"
-        dateAsString = formatter.string(from: date)
-//        fetchSetData()
-//        fetchDayData()
+    func getStreak() -> Int {
+        let streak = defaults.integer(forKey: "streak")
+        return streak
     }
     
     func getTotalTimeAsString() -> String {
@@ -196,5 +222,12 @@ class DataController {
     }
 }
 
-    
-
+extension Array {
+  func penultimate() -> Element? {
+      if self.count < 2 {
+          return nil
+      }
+      let index = self.count - 2
+      return self[index]
+  }
+}
