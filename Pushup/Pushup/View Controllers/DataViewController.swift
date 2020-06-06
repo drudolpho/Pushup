@@ -19,17 +19,18 @@ class DataViewController: UIViewController {
     @IBOutlet weak var avgPushupsLabel: UILabel!
     @IBOutlet weak var totalSetsLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
+    @IBOutlet weak var streakLabel: UILabel!
     @IBOutlet weak var chartFrameView: UIView!
     @IBOutlet weak var dailyAvgLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var lineChartView: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataController?.fetchDayData()
         dataController?.fetchSetData()
-        updateViews()
-        setupChart()
+        setupViews()
 
         let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
         view.addGestureRecognizer(backSwipe)
@@ -66,6 +67,11 @@ class DataViewController: UIViewController {
         self.present(resetAlert, animated: true)
     }
     
+    func setupViews() {
+        updateViews()
+        setupChart()
+    }
+    
     func updateViews() {
         guard let dataController = dataController else { return }
         //Total Pushups
@@ -79,6 +85,14 @@ class DataViewController: UIViewController {
         totalSetsLabel.text = "\(totalSets)"
         //Total time
         totalTimeLabel.text = dataController.getTotalTimeAsString()
+        //Streak
+        let streak = dataController.getStreak()
+        streakLabel.text = String(streak)
+        if streak == 0 {
+            streakLabel.textColor = .red
+        } else {
+            streakLabel.textColor = .green
+        }
         
         let dateAsString = dataController.formatter.string(from: dataController.dayData?.last?.date ?? Date())
         dailyAvgLabel.text = "Daily Avg: \(dataController.dayData?.last?.average ?? 0)"
