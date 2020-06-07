@@ -40,6 +40,13 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var instructionCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    //Extra
+    var quotes: [Int: String] = [
+        0: "A man grows most tired while standing still.",
+        1: "We are what we repeatedly do."
+    ]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -51,6 +58,11 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         instructionCollectionView.showsHorizontalScrollIndicator = false
         self.view.bringSubviewToFront(pageControl)
         //need to create a day, as well as all of the days since the last day. When creating a pushupSet it has to update the current day with the new info.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        titleLabel.text = "Today: \(dataController.dayData?.last?.pushups ?? 0)"
     }
     
     func prepareDark() {
@@ -80,18 +92,21 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let x = targetContentOffset.pointee.x
-        pageControl.currentPage = Int(x / instructionCollectionView.frame.width)
+        let y = Int(x / instructionCollectionView.frame.width)
+        pageControl.currentPage = y
+        self.quoteLabel.text = quotes[Int(y)]
     }
     
     func setupViews() {
         pushupLabel.isHidden = true
         soundButton.isHidden = true
         pushupLabel.text = String(countDownTime)
-//        instructionView.layer.cornerRadius = 40
-//        instructionView.layer.shadowColor = UIColor.lightGray.cgColor
-//        instructionView.layer.shadowOpacity = 0.3
-//        instructionView.layer.shadowOffset = .zero
-//        instructionView.layer.shadowRadius = 10
+        dataController.fetchDayData()
+//        greenView.layer.cornerRadius = 8
+//        greenView.layer.shadowColor = UIColor.lightGray.cgColor
+//        greenView.layer.shadowOpacity = 0.3
+//        greenView.layer.shadowOffset = .zero
+//        greenView.layer.shadowRadius = 10
         //Nav Bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -185,7 +200,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         }))
         finishedAlert?.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             self.pushupController.createSetOfPushups(time: self.pSetTime)
-            
+            self.titleLabel.text = "Today: \(self.dataController.dayData?.last?.pushups ?? 0)"
             //TESTING
             self.testController.addSet()
             let thisSet = self.testController.counter - 1
@@ -247,3 +262,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return 0
     }
 }
+
+
+

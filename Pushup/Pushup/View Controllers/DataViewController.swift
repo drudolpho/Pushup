@@ -175,7 +175,6 @@ class DataViewController: UIViewController {
             dayCache[Double(day.count)] = (day.date ?? Date(), String(day.average))
             let entry = ChartDataEntry(x: Double(day.count), y: Double(day.average))
             entries.append(entry)
-            print(day)
         }
         let set = LineChartDataSet(entries: entries, label: "")
         if dayData.count < 2 {

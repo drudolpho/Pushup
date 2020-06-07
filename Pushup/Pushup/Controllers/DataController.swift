@@ -14,29 +14,26 @@ class DataController {
     var dateAsString = "MM/dd/yyyy"
     let defaults = UserDefaults.standard
     
-//    let date = Date()
-    var date: Date {
-        var dateComponents = DateComponents()
-        dateComponents.year = 2020
-        dateComponents.month = 6
-        dateComponents.day = 17
-        dateComponents.hour = 8
-        dateComponents.minute = 33
-
-        let userCalendar = Calendar.current // user calendar
-        return userCalendar.date(from: dateComponents)!
-    }
+    let date = Date()
+//    var date: Date {
+//        var dateComponents = DateComponents()
+//        dateComponents.year = 2020
+//        dateComponents.month = 6
+//        dateComponents.day = 18
+//        dateComponents.hour = 8
+//        dateComponents.minute = 33
+//
+//        let userCalendar = Calendar.current // user calendar
+//        return userCalendar.date(from: dateComponents)!
+//    }
     
     var formatter = DateFormatter()
-//    var dayIsSet = false
     var setData: [SetOfPushups] = []
     var dayData: [Day]?
     
     init() {
         formatter.dateFormat = "MM/dd"
         dateAsString = formatter.string(from: date)
-        //        fetchSetData()
-        //        fetchDayData()
     }
     
     func updateTodaysData(set: SetOfPushups) {
@@ -213,7 +210,6 @@ class DataController {
             try CoreDataStack.shared.mainContext.execute(batchDeleteRequestDay)
             self.fetchDayData()
             self.fetchSetData()
-//            self.createDays()
         } catch {
             print("Error deleting Data")
             completion(false)

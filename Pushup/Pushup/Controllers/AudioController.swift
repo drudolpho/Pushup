@@ -22,6 +22,13 @@ class AudioController {
     
     init() {
         setupAudio()
+        
+        //Allows sound to play when ringer is off
+        do {
+           try AVAudioSession.sharedInstance().setCategory(.playback)
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
     }
 
     //Play Sounds
