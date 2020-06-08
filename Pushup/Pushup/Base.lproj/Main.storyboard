@@ -40,21 +40,11 @@
                                         <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJT-P0-0DY">
-                                        <rect key="frame" x="35" y="119" width="136.5" height="6"/>
-                                        <color key="backgroundColor" red="0.70980392156862748" green="1" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="6" id="VYg-9V-qNS"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="aJT-P0-0DY" firstAttribute="top" secondItem="oO1-H4-0S0" secondAttribute="bottom" constant="8" id="0VV-7f-Xfd"/>
                                     <constraint firstItem="PSF-f5-xa2" firstAttribute="trailing" secondItem="Pxa-pH-PDE" secondAttribute="trailingMargin" id="2na-b1-QKb"/>
-                                    <constraint firstItem="aJT-P0-0DY" firstAttribute="width" secondItem="oO1-H4-0S0" secondAttribute="width" id="J9G-wC-0FD"/>
                                     <constraint firstItem="oO1-H4-0S0" firstAttribute="leading" secondItem="Pxa-pH-PDE" secondAttribute="leading" constant="35" id="glJ-Cc-aOY"/>
-                                    <constraint firstItem="aJT-P0-0DY" firstAttribute="centerX" secondItem="oO1-H4-0S0" secondAttribute="centerX" id="ppR-Gi-jQn"/>
                                     <constraint firstItem="PSF-f5-xa2" firstAttribute="top" secondItem="Pxa-pH-PDE" secondAttribute="topMargin" id="veV-ki-HI5"/>
                                 </constraints>
                             </view>
