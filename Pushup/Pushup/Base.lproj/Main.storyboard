@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aai-5q-3jS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aai-5q-3jS">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -35,7 +35,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO1-H4-0S0">
-                                        <rect key="frame" x="35" y="69" width="136.5" height="42"/>
+                                        <rect key="frame" x="35" y="81" width="138" height="36.5"/>
                                         <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="36"/>
                                         <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wi0-AD-J6U">
-                                <rect key="frame" x="148.5" y="252" width="78" height="163.5"/>
+                                <rect key="frame" x="152.5" y="263" width="70" height="141"/>
                                 <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="140"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -128,22 +128,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="75" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbo-HS-KfH">
-                                                    <rect key="frame" x="50" y="66" width="86" height="309"/>
+                                                    <rect key="frame" x="50" y="66" width="79.5" height="309"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjY-Vx-GlA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="35"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="79.5" height="30.5"/>
                                                             <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="30"/>
                                                             <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDV-q8-ai3">
-                                                            <rect key="frame" x="0.0" y="137" width="45" height="35"/>
+                                                            <rect key="frame" x="0.0" y="139.5" width="42" height="30.5"/>
                                                             <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="30"/>
                                                             <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tq-hR-RyI">
-                                                            <rect key="frame" x="0.0" y="274" width="40" height="35"/>
+                                                            <rect key="frame" x="0.0" y="278.5" width="37" height="30.5"/>
                                                             <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="30"/>
                                                             <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -157,13 +157,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pushDOWN" translatesAutoresizingMaskIntoConstraints="NO" id="Mnq-Tt-v9k">
-                                                    <rect key="frame" x="204" y="305" width="153" height="105"/>
+                                                    <rect key="frame" x="204" y="307" width="153" height="105"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Mnq-Tt-v9k" secondAttribute="height" multiplier="51:35" id="obr-UQ-f6D"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PSphone" translatesAutoresizingMaskIntoConstraints="NO" id="ITc-VW-Vnx">
-                                                    <rect key="frame" x="274" y="54" width="63" height="59"/>
+                                                    <rect key="frame" x="274" y="52" width="63" height="59"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ITc-VW-Vnx" secondAttribute="height" multiplier="63:59" id="PGf-fp-0MH"/>
                                                     </constraints>
@@ -247,7 +247,7 @@ For best results align yourself in the middle of a well lit room and be in a set
                             <constraint firstItem="dOj-Ly-4jO" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="4Uk-RQ-Hq4"/>
                             <constraint firstItem="wi0-AD-J6U" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9KJ-tv-zPx"/>
                             <constraint firstItem="Pxa-pH-PDE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CLD-ki-58J"/>
-                            <constraint firstItem="HYr-As-9LT" firstAttribute="top" secondItem="oO1-H4-0S0" secondAttribute="bottom" constant="14.5" id="G4g-dh-Ftz"/>
+                            <constraint firstItem="HYr-As-9LT" firstAttribute="top" secondItem="oO1-H4-0S0" secondAttribute="bottom" constant="8" id="G4g-dh-Ftz"/>
                             <constraint firstItem="tt6-pe-Paz" firstAttribute="top" secondItem="dOj-Ly-4jO" secondAttribute="top" id="G8g-d5-bm0"/>
                             <constraint firstItem="wi0-AD-J6U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GVt-lv-0fM"/>
                             <constraint firstItem="PSF-f5-xa2" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.0457589" id="NtC-pa-iu4"/>
@@ -511,16 +511,16 @@ For best results align yourself in the middle of a well lit room and be in a set
                                             <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="PhX-C0-0wB">
-                                            <rect key="frame" x="85.5" y="15" width="164" height="20"/>
+                                            <rect key="frame" x="87.5" y="17.5" width="160.5" height="17.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Avg: 33" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAi-Pa-cQL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="99.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Daily Avg: 33" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAi-Pa-cQL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="99" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05/22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yw-oc-7PR">
-                                                    <rect key="frame" x="120.5" y="0.0" width="43.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="05/22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yw-oc-7PR">
+                                                    <rect key="frame" x="120" y="0.0" width="40.5" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="SeoulNamsanM" family="SeoulNamsan" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
