@@ -215,7 +215,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
-				ORGANIZATIONNAME = "Lambda School";
+				ORGANIZATIONNAME = "Dennis Rudolph";
 				TargetAttributes = {
 					95E774E024475906001BD477 = {
 						CreatedOnToolsVersion = 11.4;
@@ -469,7 +469,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Pushup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dennisrudolph.pushup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,7 +489,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Pushup;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dennisrudolph.pushup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
