@@ -102,11 +102,7 @@ class MainViewController: UIViewController, UIGestureRecognizerDelegate {
         soundButton.isHidden = true
         pushupLabel.text = String(countDownTime)
         dataController.fetchDayData()
-//        greenView.layer.cornerRadius = 8
-//        greenView.layer.shadowColor = UIColor.lightGray.cgColor
-//        greenView.layer.shadowOpacity = 0.3
-//        greenView.layer.shadowOffset = .zero
-//        greenView.layer.shadowRadius = 10
+
         //Nav Bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
