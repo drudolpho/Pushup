@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # My Push-ups
 
 You can find the deployed project on the [App Store](https://apps.apple.com/us/app/my-push-ups/id1517475985).
@@ -90,7 +89,3 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 [swift-url]: https://swift.org/
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: LICENSE
-=======
-# Pushup
-A pushup tracking app
->>>>>>> d46f5d5a7ceee65067bb889a79f7d6096849e29f
